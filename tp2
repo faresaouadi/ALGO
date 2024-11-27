@@ -1,0 +1,95 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//1
+char *ChargerChaine(int N) 
+{
+    char *chaine = (char *)malloc((N + 1) * sizeof(char)); 
+    if (chaine == NULL)
+    {
+        printf("Erreur d'allocation mémoire.\n");
+        exit(1);
+    }
+    printf("Entrez une chaine de %d caracteres: ", N);
+    scanf("%s", chaine);
+    return chaine;
+}
+//2
+
+int Longu(char *ch)
+{
+    int len = 0;
+    while (ch[len] != '\0')
+    {
+        len++;
+    }
+    return len;
+}
+//3
+
+void Charge(char *p, char Tab[])
+{
+    int i = 0;
+    while (p[i] != '\0')
+    {
+        Tab[i] = p[i];
+        i++;
+    }
+    Tab[i] = '\0'; 
+}
+//4
+
+void Invers(char Tab[], char T[], int m)
+{
+    for (int i = 0; i < m; i++)
+    {
+        T[i] = Tab[m - i - 1];
+    }
+    T[m] = '\0'; 
+}
+//6
+
+void Affiche(char Tab[], int m) 
+{
+    for (int i = 0; i < m; i++)
+   {
+        printf("%c", Tab[i]);
+    }
+    printf("\n");
+}
+//appliction
+
+int main() {
+    int N;
+
+    
+    printf("Veuilles saisir la taille maximale de la chaine:\n ");
+    scanf("%d", &N);
+
+    
+    char *chaine = ChargerChaine(N);
+
+    
+    int longueur = Longu(chaine);
+    printf("La longueur de la chaine est: %d\n", longueur);
+
+    
+    char Tab[longueur + 1]; 
+    Charge(chaine, Tab);
+
+    
+    char Inverse[longueur + 1]; 
+    Invers(Tab, Inverse, longueur);
+
+    
+    printf("Chaine originale: ");
+    Affiche(Tab, longueur);
+
+    printf("Chaine inversee: ");
+    Affiche(Inverse, longueur);
+
+    
+    free(chaine);
+
+    return 0;
+}
