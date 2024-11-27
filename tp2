@@ -47,7 +47,7 @@ void Invers(char Tab[], char T[], int m)
     }
     T[m] = '\0'; 
 }
-//6
+//5
 
 void Affiche(char Tab[], int m) 
 {
